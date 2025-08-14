@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, IsString } from '@/common/validation'
+import { IsNotEmpty, IsString, MaxLength } from '@/common/validation'
 
 export class CambioRolDto {
   @IsString()
@@ -20,11 +20,17 @@ export class AuthDto {
     example: 'ADMINISTRADOR',
     description: 'Usuario',
   })
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(20)
   usuario: string
 
   @ApiProperty({
     example: 'MTIz',
     description: 'Contraseña',
   })
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(50)
   contrasena: string
 }
